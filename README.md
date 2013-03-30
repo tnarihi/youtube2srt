@@ -7,12 +7,9 @@ This is just for my practice of parsing XML files using Python.
 
 * Copy the video URL.
 
-* Run this script like below.
-
-    ./youtube2srt.py <video url>
+* Run this script. `./youtube2srt.py <video url>`    
 
 * Then you can see the available caption language list.
 
 * Run this script again with the index number of caption language you want to dump.
-
-    ./youtube2srt.py <video url> <lang id> > script.srt
+`./youtube2srt.py <video url> <lang id> > script.srt`
