@@ -85,7 +85,7 @@ def print_srt(url, num):
         t = text.childNodes[0].data
         print '%d'%(i)
         print '%s --> %s'%(start, dur)
-        print hp.unescape(t)
+        print hp.unescape(t).encode(sys.getfilesystemencoding())
 
     
 def print_usage_and_exit():
