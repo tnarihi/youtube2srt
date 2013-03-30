@@ -18,9 +18,11 @@ def get_video_id(url):
     else:
         print >> sys.stderr, 'cannot parse youtube video id.'
         sys.exit(1)
+
     
 def get_lang_attrs(trackDom):
     return dict(trackDom.attributes.items())
+
 
 def get_lang_list(videoId):
     langUrl = CAPTION_LANG_LIST_URL%(videoId)
@@ -29,6 +31,7 @@ def get_lang_list(videoId):
     tracks = langDom.getElementsByTagName('track')
     langList = [get_lang_attrs(track) for track in tracks]
     return langList
+
 
 def select_lang(langList):
     while True:
@@ -47,9 +50,6 @@ def select_lang(langList):
     lang = langList[selectedId]
     return lang
 
-def main(url):
-    videoId = get_video_id(url)
-    langList = get_lang_list(videoId)
 
 def print_lang_list(url):
     videoId = get_video_id(url)
@@ -66,6 +66,7 @@ def convert_time_format(ftime):
         (int(ftime)%3600)%60,
         int((ftime - int(ftime)) * 1000)
         )
+
 
 def print_srt(url, num):
     videoId = get_video_id(url)
@@ -86,8 +87,8 @@ def print_srt(url, num):
         print '%d'%(i)
         print '%s --> %s'%(start, dur)
         print hp.unescape(t).encode(sys.getfilesystemencoding())
-
     
+
 def print_usage_and_exit():
     print >> sys.stderr, """#Print YouYube video caption with SRT format
 
@@ -101,6 +102,7 @@ def print_usage_and_exit():
     %(prog)s <video url> <lang id> > script.srt
 """%{'prog':av[0]}
     sys.exit(1)
+
 
 if __name__ == '__main__':
 
