@@ -16,7 +16,7 @@ def main(url):
 #    print langDom.toxml()
     tracks = langDom.getElementsByTagName('track')
     while True:
-        print 'Here are the available caption langages'
+        print '\nHere are the available caption langages:'
         for track in tracks:
             langId =  int(track.getAttribute('id'))
             langCode = track.getAttribute('lang_code')
@@ -24,14 +24,14 @@ def main(url):
             langOrig = track.getAttribute('lang_original')
             langTrasl = track.getAttribute('lang_translated')
             name = track.getAttribute('name')
-            print ' %d) lang_code=%s'%(langId, langCode)
+            print ' %d) %s'%(langId, langCode)
         try:
             selectedId = int(raw_input('Select number:'))
         except ValueError:
-            print >> sys.stderr, 'Input number.'
+            print >> sys.stderr, 'Input number'
             continue
-        if (selectedId > len(tracks)) or (selectedId < 0):
-            print >> sys.stderr, '!Input correct number'
+        if (selectedId > len(tracks)-1) or (selectedId < 0):
+            print >> sys.stderr, 'Input correct number'
             continue
         break
     track = tracks[selectedId]
